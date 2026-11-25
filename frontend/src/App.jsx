@@ -48,7 +48,7 @@ export default function App() {
 
     async function checkHealth() {
       try {
-        const res = await fetch(`${API_BASE_URL}/health`);
+        const res = await fetch(`${API_BASE_URL}/health`, { cache: "no-store" });
         if (!res.ok) {
           throw new Error(`HTTP ${res.status}`);
         }
@@ -126,6 +126,20 @@ export default function App() {
       }
 
       const now = Date.now();
+      if (health.status !== "ok") {
+        fetch(`${API_BASE_URL}/health`, { cache: "no-store" })
+          .then((r) => (r.ok ? r.json() : null))
+          .then((h) => {
+            if (h && h.status === "ok") {
+              setHealth({
+                status: "ok",
+                keys_configured: h.keys_configured ?? 0,
+                cache_enabled: Boolean(h.cache_enabled),
+              });
+            }
+          })
+          .catch(() => {});
+      }
       setMessages((prev) => [
         ...prev,
         {
