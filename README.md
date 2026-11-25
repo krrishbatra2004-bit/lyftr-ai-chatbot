@@ -4,11 +4,9 @@ A full-stack AI chatbot built with React (Vite), FastAPI, LiteLLM, and SQLite fe
 
 ## 1. Live URLs
 
-- **Frontend (Vercel):** Not yet deployed (configure `VITE_API_BASE_URL` to point to your deployed backend URL)
-- **Backend (Render):** Not yet deployed (deploy using `render.yaml` with a persistent disk at `/data`)
-- **Health Check:** `<BACKEND_URL>/health`
-
-> Replace the placeholders above once you deploy the backend to Render and the frontend to Vercel.
+- **Frontend (Vercel):** https://lyftr-ai-chatbot-alpha-six.vercel.app
+- **Backend (Render):** https://lyftr-ai-chatbot-a6b2.onrender.com
+- **Health Check:** https://lyftr-ai-chatbot-a6b2.onrender.com/health
 
 ---
 
